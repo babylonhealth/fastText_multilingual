@@ -1,6 +1,6 @@
 # Aligning the fastText vectors of 78 languages
 
-Facebook recently open-sourced word vectors in [89 languages](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md). However these vectors are monolingual; meaning that while similar words within a language share similar vectors, translation words from different languages do not have similar vectors. In a [recent paper at ICLR 2017](https://arxiv.org/abs/1702.03859), we showed how the SVD can be used to learn a linear transformation (a matrix), which aligns monolingual vectors from two languages in a single vector space. In this repository we provide 78 matrices, which can be used to align the majority of the fastText languages in a single space.
+Facebook recently open-sourced word vectors in [89 languages](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md). However these vectors are monolingual; meaning that while similar words within a language share similar vectors, translation words from different languages do not have similar vectors. In [a recent paper at ICLR 2017](https://arxiv.org/abs/1702.03859), we showed how the SVD can be used to learn a linear transformation (a matrix), which aligns monolingual vectors from two languages in a single vector space. In this repository we provide 78 matrices, which can be used to align the majority of the fastText languages in a single space.
 
 This readme explains how the matrices should be used. We also present a simple evaluation task, where we show we are able to successfully predict the translations of words in multiple languages. Our procedure relies on collecting bilingual training dictionaries of word pairs in two languages, but remarkably we are able to successfully predict the translations of words between language pairs for which we had no training dictionary!
 
@@ -10,7 +10,7 @@ If you use this repository, please cite:
 
 *Offline bilingual word vectors, orthogonal transformations and the inverted softmax  
 Samuel L. Smith, David H. P. Turban, Steven Hamblin and Nils Y. Hammerla  
-ICLR 2017 (Conference track)*
+ICLR 2017 (conference track)*
 
 ### TLDR, just tell me what to do!
 Clone a local copy of this repository, and download the fastText vectors you need from [here](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md). I'm going to assume you've downloaded the vectors for French and Russian in the text format. Let's say we want to compare the similarity of "chat" and "кот". We load the word vectors:

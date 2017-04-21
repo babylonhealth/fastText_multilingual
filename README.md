@@ -186,3 +186,9 @@ Faruqui and Dyer, EACL 2014
 Dinu et al., 2014
 6. [Learning principled bilingual mappings of word embeddings while preserving monolingual invariance](https://pdfs.semanticscholar.org/9a2e/ed5f8175275af0d55d4aed39afc8e2b2acf2.pdf?_ga=1.8571637.130713154.1492676520)  
 Artetxe et al., EMNLP 2016
+
+If you would like a general introduction to word embeddings, we recommend [Colah's blog](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/).
+
+## License
+
+The transformation matrices are distributed under the [*Creative Commons Attribution-Share-Alike License 3.0*](https://creativecommons.org/licenses/by-sa/3.0/).

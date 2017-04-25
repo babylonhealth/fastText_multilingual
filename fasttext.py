@@ -53,6 +53,24 @@ class FastVector:
         transmat = np.loadtxt(transform) if isinstance(transform, str) else transform
         self.embed = np.matmul(self.embed, transmat)
 
+    def export(self, outpath):
+        """
+        Transforming a large matrix of WordVectors is expensive. 
+        This method lets you write the transformed matrix back to a file for future use
+        :param The path to the output file to be written 
+        """
+        fout = open(outpath, "w")
+
+        # Header takes the guesswork out of loading by recording how many lines, vector dims
+        fout.write(str(self.n_words) + " " + str(self.n_dim) + "\n")
+        for k in self.word2id.keys():
+            vector_components = ["%.6f" % number for number in self[k]]
+            vector_as_string = " ".join(vector_components)
+
+            out_line = k + " " + vector_as_string + "\n"
+            fout.write(out_line)
+
+
     @classmethod
     def cosine_similarity(cls, vec_a, vec_b):
         """Compute cosine similarity between vec_a and vec_b"""

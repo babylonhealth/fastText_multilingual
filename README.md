@@ -4,7 +4,9 @@ Facebook recently open-sourced word vectors in [89 languages](https://github.com
 
 This readme explains how the matrices should be used. We also present a simple evaluation task, where we show we are able to successfully predict the translations of words in multiple languages. Our procedure relies on collecting bilingual training dictionaries of word pairs in two languages, but remarkably we are able to successfully predict the translations of words between language pairs for which we had no training dictionary!
 
-Word embeddings define the similarity between two words by the normalised inner product of their vectors. The matrices in this repository place languages in a single space, **without changing any of these monolingual similarity relationships**. When you use the resulting multilingual vectors for monolingual tasks, they will perform exactly the same as the original vectors. 
+Word embeddings define the similarity between two words by the normalised inner product of their vectors. The matrices in this repository place languages in a single space, **without changing any of these monolingual similarity relationships**. When you use the resulting multilingual vectors for monolingual tasks, they will perform exactly the same as the original vectors.
+
+Note that since we released this repository Facebook have released an additional 204 languages; however the word vectors of the original 90 languages have not changed, and the transformations provided in this repository will still work. 
 
 If you use this repository, please cite:
 

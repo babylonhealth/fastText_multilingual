@@ -170,6 +170,7 @@ All of these language pairs share very close linguistic roots. For instance the 
 
 The matrices provided in this repository are orthogonal. Intuitively, each matrix can be broken down into a series of rotations and reflections. Rotations and reflections do not change the distance between any two points in a vector space; and consequently none of the inner products between word vectors within a language are changed, only the inner products between the word vectors of different languages are affected.
 
+
 ### References
 
 There are a number of great papers on this topic. We've listed a few of them below:
@@ -188,6 +189,10 @@ Dinu et al., 2014
 Artetxe et al., EMNLP 2016
 
 If you would like a general introduction to word embeddings, we recommend [Colah's blog](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/).
+
+### Training and test dictionaries
+
+A number of readers have expressed an interest in the training and test dictionaries we used in this repository. We would have liked to upload these, however, while we have not taken legal advice, we are concerned that this could be interpreted as breaking the terms of the Google Translate API.
 
 ## License
 

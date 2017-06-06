@@ -4,9 +4,9 @@ Facebook recently open-sourced word vectors in [89 languages](https://github.com
 
 This readme explains how the matrices should be used. We also present a simple evaluation task, where we show we are able to successfully predict the translations of words in multiple languages. Our procedure relies on collecting bilingual training dictionaries of word pairs in two languages, but remarkably we are able to successfully predict the translations of words between language pairs for which we had no training dictionary!
 
-Word embeddings define the similarity between two words by the normalised inner product of their vectors. The matrices in this repository place languages in a single space, **without changing any of these monolingual similarity relationships**. When you use the resulting multilingual vectors for monolingual tasks, they will perform exactly the same as the original vectors.
+Word embeddings define the similarity between two words by the normalised inner product of their vectors. The matrices in this repository place languages in a single space, **without changing any of these monolingual similarity relationships**. When you use the resulting multilingual vectors for monolingual tasks, they will perform exactly the same as the original vectors. To learn more about word embeddings, check out [Colah's blog](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/) or [Sam's introduction to vector representations](https://www.samtalksml.net/from-linear-regression-to-vector-representations/). 
 
-Note that since we released this repository Facebook have released an additional 204 languages; however the word vectors of the original 90 languages have not changed, and the transformations provided in this repository will still work. 
+Note that since we released this repository Facebook have released an additional 204 languages; however the word vectors of the original 90 languages have not changed, and the transformations provided in this repository will still work. If you would like to learn your own alignment matrices, we provide an example in [align_your_own.ipynb](./align_your_own.ipynb).
 
 If you use this repository, please cite:
 
@@ -43,7 +43,7 @@ Turns out "chat" and "кот" are pretty similar after all. This is good, since 
 ### Ok, so how did you obtain these matrices?
 Of the 89 languages provided by Facebook, 78 are supported by the [Google Translate API](https://cloud.google.com/translate/docs/). We first obtained the 10,000 most common words in the English fastText vocabulary, and then use the API to translate these words into the 78 languages available. We split this vocabulary in two, assigning the first 5000 words to the training dictionary, and the second 5000 to the test dictionary.
 
-We described the alignment procedure in the paper. It takes two sets of word vectors and a small bilingual dictionary of translation pairs in two languages; and generates a matrix which aligns the source language with the target. Sometimes Google translates an English word to a non-English phrase, in these cases we average the word vectors contained in the phrase.
+We described the alignment procedure [in this blog](https://www.samtalksml.net/aligning-vector-representations/). It takes two sets of word vectors and a small bilingual dictionary of translation pairs in two languages; and generates a matrix which aligns the source language with the target. Sometimes Google translates an English word to a non-English phrase, in these cases we average the word vectors contained in the phrase.
 
 To place all 78 languages in a single space, **we align every language to the English vectors** (the English matrix is the identity).
 
@@ -189,8 +189,6 @@ Faruqui and Dyer, EACL 2014
 Dinu et al., 2014
 6. [Learning principled bilingual mappings of word embeddings while preserving monolingual invariance](https://pdfs.semanticscholar.org/9a2e/ed5f8175275af0d55d4aed39afc8e2b2acf2.pdf?_ga=1.8571637.130713154.1492676520)  
 Artetxe et al., EMNLP 2016
-
-If you would like a general introduction to word embeddings, we recommend [Colah's blog](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/).
 
 ### Training and test dictionaries
 

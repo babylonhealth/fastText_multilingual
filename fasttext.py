@@ -25,6 +25,10 @@ class FastVector:
     def __init__(self, vector_file='', transform=None):
         """Read in word vectors in fasttext format"""
         self.word2id = {}
+
+        # Captures word order, only used for export(), so that more frequent words are earlier in the file
+        self.id2word = []
+
         print('reading word vectors from %s' % vector_file)
         with open(vector_file, 'r') as f:
             (self.n_words, self.n_dim) = \
@@ -34,6 +38,7 @@ class FastVector:
                 elems = line.rstrip('\n').split(' ')
                 self.word2id[elems[0]] = i
                 self.embed[i] = elems[1:self.n_dim+1]
+                self.id2word.append(elems[0])
 
         if transform is not None:
             print('Applying transformation to embedding')
@@ -52,6 +57,26 @@ class FastVector:
         """
         transmat = np.loadtxt(transform) if isinstance(transform, str) else transform
         self.embed = np.matmul(self.embed, transmat)
+
+    def export(self, outpath):
+        """
+        Transforming a large matrix of WordVectors is expensive. 
+        This method lets you write the transformed matrix back to a file for future use
+        :param The path to the output file to be written 
+        """
+        fout = open(outpath, "w")
+
+        # Header takes the guesswork out of loading by recording how many lines, vector dims
+        fout.write(str(self.n_words) + " " + str(self.n_dim) + "\n")
+        for token in self.id2word:
+            vector_components = ["%.6f" % number for number in self[token]]
+            vector_as_string = " ".join(vector_components)
+
+            out_line = token + " " + vector_as_string + "\n"
+            fout.write(out_line)
+
+        fout.close()
+
 
     @classmethod
     def cosine_similarity(cls, vec_a, vec_b):

@@ -1,10 +1,13 @@
+> **Note**
+> This repository is no longer actively maintained by Babylon Health. For further assistance, reach out to the paper authors.
+
 # Aligning the fastText vectors of 78 languages
 
 Facebook recently open-sourced word vectors in [89 languages](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md). However these vectors are monolingual; meaning that while similar words within a language share similar vectors, translation words from different languages do not have similar vectors. In [a recent paper at ICLR 2017](https://arxiv.org/abs/1702.03859), we showed how the SVD can be used to learn a linear transformation (a matrix), which aligns monolingual vectors from two languages in a single vector space. In this repository we provide 78 matrices, which can be used to align the majority of the fastText languages in a single space.
 
 This readme explains how the matrices should be used. We also present a simple evaluation task, where we show we are able to successfully predict the translations of words in multiple languages. Our procedure relies on collecting bilingual training dictionaries of word pairs in two languages, but remarkably we are able to successfully predict the translations of words between language pairs for which we had no training dictionary!
 
-Word embeddings define the similarity between two words by the normalised inner product of their vectors. The matrices in this repository place languages in a single space, **without changing any of these monolingual similarity relationships**. When you use the resulting multilingual vectors for monolingual tasks, they will perform exactly the same as the original vectors. To learn more about word embeddings, check out [Colah's blog](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/) or [Sam's introduction to vector representations](https://www.samtalksml.net/from-linear-regression-to-vector-representations/). 
+Word embeddings define the similarity between two words by the normalised inner product of their vectors. The matrices in this repository place languages in a single space, **without changing any of these monolingual similarity relationships**. When you use the resulting multilingual vectors for monolingual tasks, they will perform exactly the same as the original vectors. To learn more about word embeddings, check out [Colah's blog](http://colah.github.io/posts/2014-07-NLP-RNNs-Representations/) or [Sam's introduction to vector representations](https://web.archive.org/web/20201111222742/https://www.samtalksml.net/aligning-vector-representations/). 
 
 Note that since we released this repository Facebook have released an additional 204 languages; however the word vectors of the original 90 languages have not changed, and the transformations provided in this repository will still work. If you would like to learn your own alignment matrices, we provide an example in [align_your_own.ipynb](./align_your_own.ipynb).
 
